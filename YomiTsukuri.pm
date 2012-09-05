@@ -209,7 +209,7 @@ my %onbikiLittle = (
 
 
 # 濁音静音変換　文字列置換型
-sub dakuon2seion {
+sub dakuon2seionReplace {
     $_ = shift;
     my $coding = shift;
     $_ = decode($coding, $_) if $coding;
@@ -244,12 +244,12 @@ sub dakuon2seion {
 }
 
 # 濁音静音変換　ハッシュ型
-sub dakuon2seionHash {
+sub dakuon2seion {
     my $str = shift;
     my $coding = shift;
     $str = decode($coding, $str) if $coding;
     my($i, $ch, $len, $out, @str);
-    @str = split('', @str);
+    @str = split('', $str);
     $len = @str;
     for ($i = 0; $i < $len; $i++) {
         $ch = $str[$i];
@@ -264,7 +264,7 @@ sub dakuon2seionHash {
 
 
 # 音引き変換
-sub onbiki {
+sub onbiki2shiin {
     my($str, $coding) = @_;
     $str = decode($coding, $str) if $coding;
     my($i, $ch, $pch, $len, $out, @str);
@@ -282,7 +282,7 @@ sub onbiki {
     $out;
 }
 
-sub onbikiLittle {
+sub onbiki2shiinLittle {
     my($str, $coding) = @_;
     $str = decode($coding, $str) if $coding;
     my($i, $ch, $pch, $len, $out, @str);
